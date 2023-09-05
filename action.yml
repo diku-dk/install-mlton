@@ -27,4 +27,4 @@ runs:
       run: rm -rf mlton-install-dir
     - id: report
       shell: bash
-      run: mlton --version
+      run: mlton

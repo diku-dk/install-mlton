@@ -1,0 +1,30 @@
+name: 'Install MLton'
+description: 'Installs the MLton compiler'
+inputs:
+  version:
+    description: 'Version to install (or "latest")'
+    required: false
+    default: 'latest'
+runs:
+  using: "composite"
+  steps:
+    - id: fetch
+      uses: dsaltares/fetch-gh-release-asset@1.1.0
+      with:
+        repo: 'MLton/mlton'
+        version: ${{ ((inputs.version == 'latest') && 'latest') || format('tags/on-{0}-release', inputs.version) }}
+        regex: true
+        file: "mlton-.*-1.amd64-linux-glibc2.31.tgz"
+        target: 'mlton-install-dir/'
+    - id: install
+      shell: bash
+      working-directory: 'mlton-install-dir/'
+      run: |
+        tar xvf mlton-${{steps.fetch.outputs.version}}-1.amd64-linux-glibc2.31.tgz
+        make -C mlton-${{steps.fetch.outputs.version}}-1.amd64-linux-glibc2.31.tgz install PREFIX=$HOME/.local
+    - id: cleanup
+      shell: bash
+      run: rm -rf mlton-install-dir
+    - id: report
+      shell: bash
+      run: mlton --version

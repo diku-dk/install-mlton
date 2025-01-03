@@ -20,8 +20,9 @@ runs:
       shell: bash
       working-directory: 'mlton-install-dir/'
       run: |
-        tar xvf mlton-*-1.amd64-linux-glibc2.31.tgz
-        make -C mlton-*-1.amd64-linux-glibc2.31/ install PREFIX=$HOME/.local
+        tar xvf mlton-*-1-*.tgz
+        rm -f mlton-*-1-*.tgz
+        make -C mlton-*-1-*/ install PREFIX=$HOME/.local
     - id: cleanup
       shell: bash
       run: rm -rf mlton-install-dir

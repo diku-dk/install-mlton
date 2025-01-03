@@ -14,7 +14,7 @@ runs:
         repo: 'MLton/mlton'
         version: ${{ ((inputs.version == 'latest') && 'latest') || format('tags/on-{0}-release', inputs.version) }}
         regex: true
-        file: "mlton-.*-1.amd64-linux-glibc2.31.tgz"
+        file: "mlton-.*-1.amd64-linux*-glibc2.31.tgz"
         target: 'mlton-install-dir/'
     - id: install
       shell: bash

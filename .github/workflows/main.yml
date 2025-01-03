@@ -7,17 +7,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - id: install-20210117
+      - name: Install 20210117
         uses: diku-dk/install-mlton@HEAD
         with:
           version: '20210117'
-      - id: install-20241230
+
+      - name: Install 20241230
         uses: diku-dk/install-mlton@HEAD
         with:
           version: '20241230'
-      - id: install-no-version
+
+      - name: Install unspecified version
         uses: diku-dk/install-mlton@HEAD
-      - id: install-latest
+
+      - name: Install latest version
         uses: diku-dk/install-mlton@HEAD
         with:
           version: 'latest'

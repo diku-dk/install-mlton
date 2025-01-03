@@ -20,7 +20,7 @@ runs:
       shell: bash
       working-directory: 'mlton-install-dir/'
       run: |
-        tar *.tgz
+        tar xf *.tgz
         rm -f *.tgz
         make -C mlton-*-1.*/ install PREFIX=$HOME/.local
     - id: cleanup

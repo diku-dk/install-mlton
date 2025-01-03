@@ -11,6 +11,10 @@ jobs:
         uses: diku-dk/install-mlton@HEAD
         with:
           version: '20210117'
+      - id: install-version
+        uses: diku-dk/install-mlton@HEAD
+        with:
+          version: '20241230'
       - id: install-no-version
         uses: diku-dk/install-mlton@HEAD
       - id: install-latest
